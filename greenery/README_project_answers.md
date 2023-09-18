@@ -31,12 +31,12 @@
 
 
 with order_count as (
-       select
-            user_id,
-            count(order_id) as total_orders
-        from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.stg_orders
+    select
+        user_id,
+        count(order_id) as total_orders
+    from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.stg_orders
         group by 1
-        )
+)
     
     select
         sum(case when total_orders = 1 then 1 else 0 end) as nr_users_1_order,
