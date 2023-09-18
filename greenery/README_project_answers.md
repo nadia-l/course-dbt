@@ -5,7 +5,7 @@
     from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.STG_USERS
 
 2] On average, how many orders do we receive per hour?
-    - On average receive 7.5 orders per hour
+    - On average we receive 7.5 orders per hour
     
     with 
     cte_orders_per_hour as (
