@@ -7,13 +7,12 @@
 2] On average, how many orders do we receive per hour?
     - On average we receive 7.5 orders per hour
     
-    with 
-    cte_orders_per_hour as (
-    select
-    date_trunc('hour', created_at) as order_hour,
-    count(distinct order_id) as total_hourly_orders
-    from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.stg_orders
-    group by 1
+    with cte_orders_per_hour as (
+        select
+        date_trunc('hour', created_at) as order_hour,
+        count(distinct order_id) as total_hourly_orders
+        from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.stg_orders
+        group by 1
     )
     
     select 
