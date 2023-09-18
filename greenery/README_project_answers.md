@@ -27,10 +27,10 @@
     from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.stg_orders
 
 4] How many users have only made one purchase? Two purchases? Three+ purchases?
-   - In our historical data we have 25 users that placed 1 order, 28 users with 2 orders while 71 ordered more than 3.
+   - In our historical data we have 25 users that placed 1 order, 28 users with 2 orders while 71 ordered more than 3
      
    with order_count as (
-        select
+       select
             user_id,
             count(order_id) as total_orders
         from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.stg_orders
