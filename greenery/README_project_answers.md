@@ -36,7 +36,6 @@
         from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.stg_orders
         group by 1
         )
-
     select
         sum(case when total_orders = 1 then 1 else 0 end) as nr_users_1_order,
         sum(case when total_orders = 2 then 1 else 0 end) as nr_users_2_order,
