@@ -1,3 +1,35 @@
+Week_2
+1] What is our user repeat rate?
+76.2%
+
+with cte_orders_per_user as (
+select
+    user_id,
+    count(distinct order_id) as total_orders
+from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.STG_ORDERS
+group by 1
+having total_orders >= 2
+),
+
+cte_total_users as(
+select count(distinct user_id) as total_users
+from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.STG_USERS
+)
+
+select 
+    round(100*(count(user_id) / (select total_users from cte_total_users)),1) as repeat_rate_pct
+from cte_orders_per_user;
+
+2] What are good indicators of a user who will likely purchase again? What about indicators of users who are likely NOT to purchase again? If you had more data, what features would you want to look into to answer this question?
+
+Metrics to look at to asses this question would be: users who have purchased more than 2 times in the span of the last 3 months. We would have to look at specific timeframes to assess what constitues a healthy frequency of bying.
+Clients who add products to their cart instead of just viewing in combination with nr of purchaces. F.e. clients who haven't bought anything in the past year or cients who only bought once in the past 6 months would not be likely to purchace again.
+
+3] how did the snapshot change since last week?
+We can see that the items Pothos, Philodendron, Monstera and String of Pearls have been updated in the snapshot table with new entries that reflect the change in the inventory's availability.
+
+
+Week_1
 1] How many users do we have?
     - We have 130 distinct users
     select count(distinct user_id)
