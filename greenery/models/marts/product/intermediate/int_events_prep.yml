@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: int_events_prep
+    description: This table should be on the event_id level with combined info on product and order related to the event
+    columns:
+     - name: event_id
+       tests:
+          - unique

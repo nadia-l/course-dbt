@@ -8,6 +8,6 @@
 
 select
     promo_id,
-    discount,
+    discount as promo_code_discount,
     status
 from {{ source ('postgress', 'promos') }}

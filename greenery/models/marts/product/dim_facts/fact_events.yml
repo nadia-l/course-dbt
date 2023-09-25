@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: fact_events
+    description: All event types from stg_events with limited information exposed
+    columns:
+     - name: event_id
+       tests:
+          - unique

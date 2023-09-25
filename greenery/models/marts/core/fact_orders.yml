@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: This table should be on the order_id level with factual info around every order
+    columns:
+     - name: order_id
+       tests:
+          - unique
