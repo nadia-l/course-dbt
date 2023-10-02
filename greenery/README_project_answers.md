@@ -8,6 +8,10 @@ The conversion rate by product is calculated within new model dim_product_perfor
 In this table we see a variation of conversion rate between the products from 68% to 38%. The reason why is
 multifactor, it could be the price, the marketing of each product, the shipping cost, the to door delivery depending on inventory availability.
 
+3] how did the snapshot change since last week?
+The same items as last week Pothos, Philodendron, Monstera and String of Pearls have been updated to a lower inventory plus two additional items Bamboo and ZZ plant. It seems that these items are trending.
+
+
 
 
 Week_2
