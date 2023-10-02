@@ -17,7 +17,8 @@ select
     events.order_id,
     events.event_type,
     events.created_at,
-    events.product_id,
+    --to include all prodcut_ids including the ones that materialised to orders and can't be found in events or orders
+    coalesce(events.product_id, order_items.product_id) as product_id,
     orders.promo_id,
     orders.created_at as order_created_at,
     orders.order_cost,
@@ -30,6 +31,8 @@ from {{ ref('stg_events')}} as events
 --left join will only bring in info from orders for the events that were checked out
 left join {{ ref('stg_orders')}} as orders
     on events.order_id = orders.order_id
+left join {{ ref('stg_order_items')}} as order_items
+    on orders.order_id = order_items.order_id
 --left join will bring in info for all products included in events, assumming no product is missing from the stg_product inventory table
 left join {{ ref('stg_products')}} as products
     on events.product_id = products.product_id

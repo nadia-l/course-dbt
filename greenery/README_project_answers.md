@@ -1,3 +1,15 @@
+Week 3
+1] What is our overall conversion rate?
+From newly created table dim_products in core folder, we see that the overall conversion(form all prodcuts) amounts
+to ~62% on the basis of total events with checkout type over the total of unique session ids
+
+2] What is our conversion rate by product?
+The conversion rate by product is calculated within new model dim_product_performance_details.
+In this table we see a variation of conversion rate between the products from 68% to 38%. The reason why is
+multifactor, it could be the price, the marketing of each product, the shipping cost, the to door delivery depending on inventory availability.
+
+
+
 Week_2
 1] What is our user repeat rate?
 76.2%
