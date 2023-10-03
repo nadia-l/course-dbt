@@ -26,7 +26,7 @@ select
     orders.shipping_cost,
     orders.order_total,
     orders.tracking_id,
-    coalesce(events.product_id, order_items.product_id) as product_id,
+    --coalesce(events.product_id, order_items.product_id) as product_id,
     products.product_name,
     products.product_price
 from {{ ref('stg_events')}} as events
@@ -37,7 +37,7 @@ left join {{ ref('stg_order_items')}} as order_items
     on events.order_id = order_items.order_id
 --left join will bring in info for all products included in events, assumming no product is missing from the stg_product inventory table
 left join {{ ref('stg_products')}} as products
-    on events.product_id = products.product_id
+    on order_items.product_id = products.product_id
 )
 
 select 

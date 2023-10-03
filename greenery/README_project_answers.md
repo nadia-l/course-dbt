@@ -1,15 +1,12 @@
 Week 3
 1] What is our overall conversion rate?
 From newly created table dim_products in core folder, we see that the overall conversion(form all prodcuts) amounts
-to ~62% on the basis of total events with checkout type over the total of unique session ids
+to ~62% on the basis of total events with checkout type over the total of unique session ids. The below results 
+comes from table dim_products.sql
 
 SQL```
-select
-    sum(case when event_type = 'checkout' then 1 else 0 end) as purchase_events,
-    count( distinct session_id) as total_sessions,
-    round(100*(purchase_events / total_sessions),0) as total_conversion_rate
-from DEV_DB.DBT_KLYMPERIFLEXPORTCOM.stg_events
-;
+PURCHASE_EVENTS	TOTAL_SESSIONS	TOTAL_CONVERSION_RATE
+361	578	62
 ```
 
 2] What is our conversion rate by product?
