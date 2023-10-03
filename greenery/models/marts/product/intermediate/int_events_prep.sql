@@ -10,7 +10,8 @@
 -- on created orders and products for all event types, irrelevant to whether the order
 -- has been completed or not.
 
-select 
+with cte_prep as (
+select
     events.event_id,
     events.session_id,
     events.user_id,
@@ -32,7 +33,30 @@ from {{ ref('stg_events')}} as events
 left join {{ ref('stg_orders')}} as orders
     on events.order_id = orders.order_id
 left join {{ ref('stg_order_items')}} as order_items
-    on orders.order_id = order_items.order_id
+    on events.order_id = order_items.order_id
 --left join will bring in info for all products included in events, assumming no product is missing from the stg_product inventory table
 left join {{ ref('stg_products')}} as products
     on events.product_id = products.product_id
+)
+
+select 
+    {{ dbt_utils.generate_surrogate_key( 
+        ['event_id', 
+        'product_id']
+    )}} as pk,
+    event_id,
+    session_id,
+    user_id,
+    order_id,
+    event_type,
+    created_at,
+    product_id,
+    promo_id,
+    order_created_at,
+    order_cost,
+    shipping_cost,
+    order_total,
+    tracking_id,
+    product_name,
+    product_price
+from cte_prep
