@@ -26,6 +26,7 @@ select
     orders.shipping_cost,
     orders.order_total,
     orders.tracking_id,
+    coalesce(events.product_id, order_items.product_id) as product_id,
     products.product_name,
     products.product_price
 from {{ ref('stg_events')}} as events
